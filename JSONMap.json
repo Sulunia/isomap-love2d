@@ -7,7 +7,11 @@
     {
       "file": "DirtTile.png",
       "mnemonic": "dirt"
-    }
+    },
+	{
+      "file": "WaterTile.png",
+      "mnemonic": "water"
+    }, 
   ],
   "data":[
         [["grass"], ["dirt"], ["water"], ["grass"]],
