@@ -16,20 +16,30 @@ function map.decodeJson(filename)
 	
 	--Attempts to decode file
 	mapDec = json.decode(mapJson)
-	for k, v in ipairs(mapDec.data) do
-		print("Coluna "..k..": =-=-=-=-=-=-=-=-=-=")
-		for i, z in ipairs(v) do	
-			print("Linha "..i..":")
-			for x, r in ipairs(z) do
-				print(r)
+
+end
+
+
+function map.generatePlayField()
+	for i, texture in ipairs(mapDec.textures) do
+		--Print table contents for now
+		print(texture.file)
+		print(texture.mnemonic)
+		print("---")
+		
+		--TODO: Add texture insertion to table for drawing
+		mapTextures[texture.mnemonic] = texture.file
+		
+	end
+	for i, fieldData in ipairs(mapDec.data) do
+		--Print playfield information and tile position
+		print("Column "..i.." :")
+		for j, column in ipairs(fieldData) do
+			print("Line "..j.." :")
+			for k, row in ipairs(column) do
+				print(row)
 			end
 		end
 	end
-
 end
 
-function map.generatePlayField(decMap)
-	
-
-
-end
