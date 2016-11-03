@@ -1,0 +1,24 @@
+{
+	"data":[
+		[["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt", "character"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt", "character"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt", "character"], ["water", "character"], ["grass", "character"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt"], ["water"], ["grass", "character"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass", "character"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass", "character"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt"], ["water"], ["grass", "character"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass", "character"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt", "character"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt", "character"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt"], ["water", "character"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt"], ["water"], ["grass", "character"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt"], ["water"], ["grass"], ["grass", "character"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt"], ["water", "character"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt", "character"], ["water"], ["grass"]],
+		[["grass"], ["dirt", "character"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water", "character"], ["grass"]],
+		[["grass"], ["dirt"], ["water", "character"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass", "character"]],
+		[["grass"], ["dirt"], ["water"], ["grass"], ["grass", "character"], ["dirt"], ["water", "character"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"]],
+		[["grass"], ["dirt"], ["water"], ["grass"], ["grass"], ["dirt"], ["water"], ["grass"], ["grass", "character"], ["dirt"], ["water"], ["grass"]]
+		]
+}

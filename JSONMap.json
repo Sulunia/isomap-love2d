@@ -1,0 +1,19 @@
+{
+  "textures": [
+    {
+      "file": "GrassTile.png",
+      "mnemonic": "grass"
+    }, 
+    {
+      "file": "DirtTile.png",
+      "mnemonic": "dirt"
+    }
+  ],
+  "data":[
+        [["grass"], ["dirt"], ["water"], ["grass"]],
+        [["dirt"], ["water"], ["grass"], ["dirt"]],
+        [["water"], ["grass"], ["dirt"], ["water"]],
+        [["grass"], ["dirt"], ["water"], ["grass"]],
+        [["dirt"], ["water"], ["grass"], ["dirt"]]
+    ]
+}
