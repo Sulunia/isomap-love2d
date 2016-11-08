@@ -12,12 +12,21 @@
       "file": "WaterTile.png",
       "mnemonic": "water"
     }, 
-  ],
+],
+	
+	"props":[
+	{
+		"file": "pixelTree.png",
+		"mnemonic": "tree",
+		"origin" : "72|229"
+	}
+	],
+  
   "data":[
-        [["grass"], ["dirt"], ["water"], ["grass"]],
-        [["dirt"], ["water"], ["grass"], ["dirt"]],
-        [["water"], ["grass"], ["dirt"], ["water"]],
-        [["grass"], ["dirt"], ["water"], ["grass"]],
-        [["dirt"], ["water"], ["grass"], ["dirt"]]
+        [["grass", "tree"], ["grass"], ["grass"], ["grass", "tree"]],
+        [["grass"], ["water"], ["water"], ["grass"]],
+        [["water"], ["water"], ["water"], ["grass"]],
+        [["grass"], ["grass"], ["water"], ["grass"]],
+        [["grass", "tree"], ["grass"], ["grass"], ["grass", "tree"]]
     ]
 }

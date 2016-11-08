@@ -1,13 +1,14 @@
 require("modules/externals/autobatch")
 json = require("modules/externals/dkjson")
 require ("modules/mapDecoder")
+require("modules/externals/lovedebug")
 
 x = 0
 y = 0
 
 
 function love.load()
-	map.decodeJson("BigJSONMap.json")
+	map.decodeJson("JSONMap.json")
 	
 	map.generatePlayField()
 end
