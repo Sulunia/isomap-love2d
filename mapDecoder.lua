@@ -147,6 +147,11 @@ function map.draw(xOff, yOff, size)
 	
 end
 
+--Links used whilst searching for information on isometric maps:
+--http://stackoverflow.com/questions/892811/drawing-isometric-game-worlds
+--https://gamedevelopment.tutsplus.com/tutorials/creating-isometric-worlds-a-primer-for-game-developers--gamedev-6511
+--Give it a good read if you don't understand whats happening over here.
+
 function map.toIso(x, y)
 	assert(x, "Position X is nil!")
 	assert(y, "Position Y is nil!")
