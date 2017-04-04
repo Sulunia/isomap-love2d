@@ -1,32 +1,76 @@
 {
-  "textures": [
-    {
-      "file": "GrassTile.png",
-      "mnemonic": "grass"
-    }, 
-    {
-      "file": "DirtTile.png",
-      "mnemonic": "dirt"
-    },
+"textures":
+[
 	{
-      "file": "WaterTile.png",
-      "mnemonic": "water"
-    }, 
+		"file": "ls.png",
+		"mnemonic": "grass"
+	}, 	
+	{
+		"file": "rd.png",
+		"mnemonic": "road"
+	},
+	{
+		"file":"rdl.png",
+		"mnemonic":"roadL"
+	},
+	{
+		"file":"rdv.png",
+		"mnemonic":"roadV"
+	},
+	{
+		"file":"rdr.png",
+		"mnemonic":"roadR"
+	},
+	{
+		"file":"rdrd.png",
+		"mnemonic":"roadD"
+	},
+	{
+		"file":"water.png",
+		"mnemonic":"water"
+	}
 ],
 	
-	"props":[
+"props":
+[
 	{
 		"file": "pixelTree.png",
 		"mnemonic": "tree",
-		"origin" : "72|229"
+		"origin" : "72|245"
+	},
+	{
+		"file":"praca.png",
+		"mnemonic":"post",
+		"origin":"15|65"
 	}
-	],
+],
   
-  "data":[
-        [["grass", "tree"], ["grass"], ["grass"], ["grass", "tree"]],
-        [["grass"], ["water"], ["water"], ["grass"]],
-        [["water"], ["water"], ["water"], ["grass"]],
-        [["grass"], ["grass"], ["water"], ["grass"]],
-        [["grass", "tree"], ["grass"], ["grass"], ["grass", "tree"]]
-    ]
+"data":
+[     
+	[["water"],["water"],["water"],["water"],["water"],["water"],["water"],["water"],["water"],["water"],["water"],["water"],["water"],["water"],["water"]]
+	[["grass", "tree"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass", "tree"],["grass"],["grass"],["grass"],["grass"]]
+	[["grass"],["grass", "tree"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"]]
+	[["grass"],["grass"],["roadD"],["road"], ["road"], ["road"], ["road"], ["road"], ["road"], ["road"], ["road"], ["roadR"],["grass"],["grass"],["grass"]]
+	[["grass"],["grass"],["roadV"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass", "post"],["grass"],["roadV"],["grass"],["grass", "tree"],["grass"]]
+	[["grass"],["grass"],["roadV"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["roadV"],["grass"],["grass"],["grass"]]
+	[["grass"],["grass"],["roadV"],["grass"],["grass"],["grass", "tree"],["grass"],["grass"],["grass"],["grass"],["grass"],["roadV"],["grass"],["grass"],["grass", "tree"]]
+	[["grass"],["grass"],["roadV"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass", "tree"],["grass"],["grass"],["roadV"],["grass"],["grass"],["grass"]]
+	[["grass"],["grass"],["roadV"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["roadV"],["grass"],["grass"],["grass"]]
+	[["grass", "tree"],["grass"],["roadV"],["grass", "tree"],["grass"],["grass"],["grass"],["grass", "tree"],["grass"],["grass"],["grass"],["roadV"],["grass"],["grass", "tree"],["grass"]]
+	[["grass"],["grass"],["roadV"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["roadV"],["grass"],["grass"],["grass"]]
+	[["grass"],["grass"],["roadV"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass", "tree"],["grass"],["roadV"],["grass"],["grass"],["grass"]]
+	[["grass"],["grass"],["roadV"],["grass"],["grass"],["grass", "tree"],["grass"],["grass"],["grass"],["grass"],["grass"],["roadV"],["grass"],["grass"],["grass"]]
+	[["grass", "tree"],["grass"],["roadV"],["grass"],["grass"],["grass"],["grass"],["grass", "tree"],["grass"],["grass"],["grass"],["roadV"],["grass"],["grass"],["grass"]]
+	[["grass"],["grass"],["roadV"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["grass"],["roadV"],["grass"],["grass"],["grass", "tree"]]
+	[["grass"],["grass"],["roadV"],["grass", "tree"],["grass"],["grass"],["grass"],["grass", "tree"],["grass"],["grass"],["grass"],["roadV"],["grass"],["grass", "tree"],["grass"]]
+],
+
+"general":
+[
+	{
+		"name":"Simple road",
+		"version":"v0.1",
+		"lighting":"255|255|255"
+	}
+]
 }
