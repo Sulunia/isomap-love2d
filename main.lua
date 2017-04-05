@@ -1,23 +1,21 @@
-require("modules/externals/autobatch")
-require ("mapDecoder")
-
-
+isomap = require ("isomap")
 function love.load()
 	--Variables
 	x = 0
 	y = 0
-	bx, by = 0
 	zoomL = 1
 	zoom = 1
-	
+
 	--Set background to deep blue
 	love.graphics.setBackgroundColor(0, 0, 69)
+	love.graphics.setDefaultFilter("linear", "linear", 8)
+
 
 	--Decode JSON map file
-	map.decodeJson("JSONMap.json")
-	
+	isomap.decodeJson("JSONMap.json")
+
 	--Generate map from JSON file (loads assets and creates tables)
-	map.generatePlayField()
+	isomap.generatePlayField()
 end
 
 function love.update(dt)
@@ -30,8 +28,7 @@ function love.update(dt)
 end
 
 function love.draw()
-	
-	map.draw(x, y, zoomL)
+	isomap.draw(x, y, zoomL)
 	info = love.graphics.getStats()
 	love.graphics.print("FPS: "..love.timer.getFPS())
 	love.graphics.print("Draw calls: "..info.drawcalls, 0, 12)
@@ -42,11 +39,11 @@ end
 
 function love.wheelmoved(x, y)
     if y > 0 then
-        zoom = zoom + 0.1 
+      zoom = zoom + 0.1
     elseif y < 0 then
-        zoom = zoom - 0.1
+      zoom = zoom - 0.1
     end
-	
+
 	if zoom < 0.1 then zoom = 0.1 end
 end
 

@@ -11,10 +11,7 @@ The example uses mouse wheel to zoom in and zoom out, and arrow keys to move the
 I'll keep on adding things, such as elevation and maybe programmable tiles. I'll make a nice level editor too if needed. Won't be fast though.
 
 ### Modules used:
-* [DKJson](https://github.com/LuaDist/dkjson) for json parsing.
-* [Autobatch for love2D](https://github.com/rxi/autobatch), so things don't slow down too much.
-* [Lovedebug](https://github.com/Ranguna/LOVEDEBUG) so you can have a nice ingame console. Disabled though.
-* [Lovebird](https://github.com/rxi/lovebird) since it helps wonders with table content viewing.
-* [Kenney's isometric sprites](https://kenney.nl/) since I suck at drawing. (The example tree is an example.)
+* [DKJson](https://github.com/LuaDist/dkjson) for json parsing. Used by the library itself.
+* [Lovebird](https://github.com/rxi/lovebird) since it helps wonders with table content viewing. Used in the demo included.
+* [Kenney's isometric sprites](https://kenney.nl/) since I suck at drawing. Used in the demo.
 * [segfaultd](https://github.com/danielpontello) for drawing an example notice board, can be seen in the demo.
-
