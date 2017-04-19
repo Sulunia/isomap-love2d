@@ -49,9 +49,9 @@ The basic JSON map will look a bit like this:
   
 "data":
 [     
-	[["myMnemonic"],["myMnemonic"],["myMnemonic"]],
-	[["myMnemonic"],["myMnemonic", "myProp"],["myMnemonic"]],
-	[["myMnemonic"],["myMnemonic"],["myMnemonic"]]
+	[["myTexture"],["myTexture"],["myTexture"]],
+	[["myTexture"],["myTexture", "myProp"],["myTexture"]],
+	[["myTexture"],["myTexture"],["myTexture"]]
 ],
 
 "general":
