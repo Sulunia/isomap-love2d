@@ -162,7 +162,7 @@ Generates the playfield with information provided by the preovously loaded JSON 
 ```Lua
 isomap.generatePlayfield()
 ```
-## isomap.draw(x, y, zoomLevel)
+## isomap.drawGround(x, y, zoomLevel)
 Draws the map with a *X* and a *Y* offset scaled by *zoomLevel*.
 
 *Arguments:*
@@ -171,7 +171,19 @@ Draws the map with a *X* and a *Y* offset scaled by *zoomLevel*.
 
 *Example:*
 ```Lua
-isomap.draw(300, 200, 1.5)
+isomap.drawGround(300, 200, 1.5)
+```
+
+## isomap.drawObjects(x, y, zoomLevel)
+Sorts ZBuffer and draws objects on the map with a *X* and a *Y* offset scaled by *zoomLevel*.
+
+*Arguments:*
+* **x** and **y**: X and Y offset for object drawing.
+* zoomLevel: a number specifiying the scale the objects should be rendered. Used primarily for zooming in and out.
+
+*Example:*
+```Lua
+isomap.drawObjects(300, 200, 1.5)
 ```
 ## isomap.toIso(x, y)
 Converts *x* and *y* from cartesian (2D) to isometric coordinates.
