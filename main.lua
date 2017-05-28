@@ -28,7 +28,8 @@ function love.update(dt)
 end
 
 function love.draw()
-	isomap.draw(x, y, zoomL)
+	isomap.drawGround(x, y, zoomL)
+	isomap.drawObjects(x, y, zoomL)
 	info = love.graphics.getStats()
 	love.graphics.print("FPS: "..love.timer.getFPS())
 	love.graphics.print("Draw calls: "..info.drawcalls, 0, 12)
