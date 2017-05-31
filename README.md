@@ -232,7 +232,8 @@ function love.update(dt)
 end
 
 function love.draw()
-	isomap.draw(x, y, 1)
+	isomap.drawGround(x, y, 1)
+	isomap.drawObjects(x, y, 1)
 end
 
 ```
