@@ -24,18 +24,20 @@ local json = require("dkjson")
 --TODO: Load dkjson relative to mapDecoder's path.
 
 
-local map = {}
-local mapDec = {}
+map = {}
+mapDec = {}
 local mapTextures = {}
-local mapPositions = {}
-local mapProps = {}
+mapPositions = {}
+mapProps = {}
 local mapLighting = {}
-local mapPropsfield = {}
+mapPropsfield = {}
 local tileWidth = 0
 local tileHeight = 0
 
 local mapPlayfieldWidthInTiles = 0
 local mapPlayfieldHeightInTiles = 0
+
+local objectListSize = 0
 
 local zoomLevel = 1
 
@@ -135,10 +137,15 @@ function map.generatePlayField()
 				for i, objects in ipairs(mapDec.data[colunas][linhas]) do
 					if objects == props.mnemonic then
 						--table.insert(mapPositions[colunas][linhas], {texture=props.image, x=linhas, y=colunas, offX=props.origins[1], offY=props.origins[2]})
-						pX = linhas
-						pY = colunas
-						pX, pY = map.toIso(pX, pY)
-						table.insert(mapPropsfield,{texture=props.image, x=linhas, y=colunas, offX=props.origins[1], offY=props.origins[2], mapY = pY, mapX = pX})
+
+						--VERY IMPORTANT NOTE ABOUT THE FOLLOWING LINES
+						--these control the ZBuffer in some *dark manner*. IT WORKS. I **really** have to figure out why.
+						pX, pY = map.toIso(linhas, colunas)
+
+						colX = linhas * (tileWidth*zoomLevel)
+						colY = colunas * (tileWidth*zoomLevel)
+						colX, colY = map.toIso(colX, colY)
+						table.insert(mapPropsfield,{texture=props.image, x=linhas, y=colunas, offX=props.origins[1], offY=props.origins[2], mapY = pY, mapX = pX, colX = colX, colY = colY, width = props.image:getWidth(), height = props.image:getHeight(), alpha = false})
 					end
 				end
 
@@ -149,6 +156,9 @@ function map.generatePlayField()
 	--Calculate map dimensions
 	mapPlayfieldWidthInTiles = #mapPositions
 	mapPlayfieldHeightInTiles = #mapPositions[1]
+
+	--Store map original object list size without any extra dynamic objects
+	objectListSize = #mapPropsfield
 
 	timerEnd = love.timer.getTime()
 	print("Decode loop took "..((timerEnd-timerStart)*100).."ms")
@@ -176,12 +186,36 @@ function map.drawGround(xOff, yOff, size)
 end
 
 function map.drawObjects(xOff, yOff, size)
+
+	--Figure out dynamic object occlusion
+	if #mapPropsfield > objectListSize then
+		for i=objectListSize+1, #mapPropsfield do
+			for j=1, objectListSize do
+				if CheckCollision(mapPropsfield[j].colX, mapPropsfield[j].colY, mapPropsfield[j].width, mapPropsfield[j].height, mapPropsfield[i].colX, mapPropsfield[i].colY, mapPropsfield[i].width, mapPropsfield[i].height) and mapPropsfield[i].y < mapPropsfield[j].y and mapPropsfield[i].x < mapPropsfield[j].x then
+					mapPropsfield[j].alpha = true
+				end
+			end
+		end
+	end
+
 	--Sort ZBuffer and draw objects.
 	for k,v in spairs(mapPropsfield, function(t,a,b) return t[b].mapY > t[a].mapY end) do
 		local xPos = v.x * (tileWidth*zoomLevel)
 		local yPos = v.y * (tileWidth*zoomLevel)
 		local xPos, yPos = map.toIso(xPos, yPos)
+
+		if v.alpha then
+			love.graphics.setColor(255, 255, 255, 90)
+		else
+			love.graphics.setColor(255, 255, 255, 255)
+		end
 		love.graphics.draw(v.texture, xPos+xOff, yPos+yOff, 0, size, size, v.offX, v.offY)
+
+		--Update values in order to minimize for loops
+		v.alpha = false
+		v.colX = xPos-v.offX
+		v.colY = yPos-v.offY
+		v.mapX, v.mapY = map.toIso(v.x, v.y)
 	end
 end
 
@@ -227,8 +261,6 @@ function map.toCartesian(x, y)
 	return x, y
 end
 
---The two functions below may be deprecated, since they relied on an old method of object handling
---which didn't previously use a proper Z-buffer.
 function map.insertNewObject(textureI, isoX, isoY, offXR, offYR)
 	--User checks
 	if offXR == nil then offXR = 0 end
@@ -239,8 +271,12 @@ function map.insertNewObject(textureI, isoX, isoY, offXR, offYR)
 	assert(mapPlayfieldWidthInTiles>=isoX, "Insertion coordinates out of map bounds! (X)")
 	assert(mapPlayfieldWidthInTiles>=isoY, "Insertion coordinates out of map bounds! (Y)")
 	local rx, ry = map.toIso(isoX, isoY)
+
+	local colX = isoX * (tileWidth*zoomLevel)
+	local colY = isoY * (tileWidth*zoomLevel)
+	colX, colY = map.toIso(colX, colY)
 	--Insert object on map
-	table.insert(mapPropsfield, {texture=textureI, x=isoY, y=isoX+0.001, offX=offXR, offY = offYR, mapY = ry, mapX = rx})
+	table.insert(mapPropsfield, {texture=textureI, x=isoY, y=isoX+0.001, offX=offXR, offY = offYR, mapY = ry, mapX = rx, colX = colX, colY = colY, width = textureI:getWidth(), height = textureI:getHeight(), alpha = false})
 end
 
 function map.removeObject(x, y)
@@ -279,9 +315,7 @@ function string:split_(sSeparator, nMax, bRegexp)
 end
 
 function spairs(t, order)
-	--https://stackoverflow.com/questions/15706270/sort-a-table-in-lua
-	--Function "spairs" by Michal Kottman.
-		-- collect the keys
+    -- collect the keys
     local keys = {}
     for k in pairs(t) do keys[#keys+1] = k end
 
@@ -301,6 +335,19 @@ function spairs(t, order)
             return keys[i], t[keys[i]]
         end
     end
+		--https://stackoverflow.com/questions/15706270/sort-a-table-in-lua
+		--Function "spairs" by Michal Kottman.
+end
+
+-- Collision detection function;
+-- Returns true if two boxes overlap, false if they don't;
+-- x1,y1 are the top-left coords of the first box, while w1,h1 are its width and height;
+-- x2,y2,w2 & h2 are the same, but for the second box.
+function CheckCollision(x1,y1,w1,h1, x2,y2,w2,h2)
+  return x1 < x2+w2 and
+         x2 < x1+w1 and
+         y1 < y2+h2 and
+         y2 < y1+h1
 end
 
 return map
